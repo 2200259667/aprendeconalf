@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        // Definir la lista de asignaturas
+        List<string> asignaturas = new List<string>
+        {
+            "Matemáticas",
+            "Física",
+            "Química",
+            "Historia",
+            "Lengua"
+        };
+
+        // Crear un diccionario para almacenar las notas de cada asignatura
+        Dictionary<string, double> notas = new Dictionary<string, double>();
+
+        // Pedir al usuario la nota para cada asignatura
+        foreach (string asignatura in asignaturas)
+        {
+            Console.Write($"¿Qué nota has sacado en {asignatura}? ");
+            double nota;
+            while (!double.TryParse(Console.ReadLine(), out nota))
+            {
+                Console.WriteLine("Entrada no válida. Por favor, introduce un número.");
+                Console.Write($"¿Qué nota has sacado en {asignatura}? ");
+            }
+            notas[asignatura] = nota;
+        }
+
+        // Mostrar las asignaturas y las notas
+        Console.WriteLine("\nNotas obtenidas:");
+        foreach (var item in notas)
+        {
+            Console.WriteLine($"En {item.Key} has sacado {item.Value}");
+        }
+    }
+}
